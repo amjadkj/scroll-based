@@ -147,34 +147,34 @@ export const ChapterOverlay = forwardRef<ChapterOverlayHandle, ChapterOverlayPro
 
           <div className="relative z-10 flex flex-col gap-3 sm:gap-4">
             {/* Eyebrow / Label */}
-            <div className="flex items-center gap-2">
+            {/* <div className="flex items-center gap-2">
               <span className="inline-block w-2 h-2 rounded-full bg-amber-glue shadow-sm" />
               <span className="font-mono text-xs sm:text-[13px] tracking-[0.16em] uppercase text-veneer font-medium">
                 {chapter.label}
               </span>
-            </div>
+            </div> */}
 
             {/* Headline */}
-            <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold text-birch leading-[1.08] tracking-tight max-w-[20ch]">
+            <h2 className="font-serif text-3xl sm:text-3xl lg:text-3xl font-bold text-birch leading-[1.08] tracking-tight max-w-[20ch]">
               {chapter.headline}
             </h2>
 
-            {/* Body Narrative */}
+            {/* Body Narrative
             <p className="font-sans text-sm sm:text-base lg:text-lg text-birch/85 leading-relaxed max-w-[42ch]">
               {chapter.body}
-            </p>
+            </p> */}
 
             {/* Precision Engineering Stat Card */}
             {chapter.stat && (
               <div className="mt-2 inline-flex items-center gap-3 bg-ink-800/80 backdrop-blur-md border border-veneer/25 px-4 py-2.5 rounded-sm max-w-fit shadow-md">
-                <span className="font-mono text-lg sm:text-xl font-bold text-amber-glow tracking-tight">
+                <span className="font-mono text-smm sm:text-sm font-bold text-amber-glow tracking-tight">
                   {chapter.stat.value}
                 </span>
                 {chapter.stat.caption && (
                   <div className="h-5 w-[1px] bg-white/20" />
                 )}
                 {chapter.stat.caption && (
-                  <span className="text-xs sm:text-sm text-steel tracking-wide">
+                  <span className="text-xs sm:text-xs text-steel tracking-wide">
                     {chapter.stat.caption}
                   </span>
                 )}
@@ -182,7 +182,7 @@ export const ChapterOverlay = forwardRef<ChapterOverlayHandle, ChapterOverlayPro
             )}
 
             {/* Quality Specifications bullet pills */}
-            {chapter.details && chapter.details.length > 0 && (
+            {/* {chapter.details && chapter.details.length > 0 && (
               <div className="flex flex-wrap gap-2 pt-1">
                 {chapter.details.map((detail, dIdx) => (
                   <span
@@ -194,7 +194,7 @@ export const ChapterOverlay = forwardRef<ChapterOverlayHandle, ChapterOverlayPro
                   </span>
                 ))}
               </div>
-            )}
+            )} */}
 
             {/* Chapter 00 Hero Cue */}
             {isHero && (
@@ -242,13 +242,13 @@ export const ChapterOverlay = forwardRef<ChapterOverlayHandle, ChapterOverlayPro
                     </div>
                     <div className="flex items-center gap-4 text-birch/70">
                       <a href="mailto:supply@arborisplywood.com" className="hover:text-amber-glow underline">
-                        supply@arborisplywood.com
+                        message.slash@gmail.com
                       </a>
                     </div>
                   </div>
 
                   <div className="flex flex-wrap items-center justify-between gap-4 text-[10px] text-steel/80">
-                    <div className="flex items-center gap-2">
+                    {/* <div className="flex items-center gap-2">
                       <span className="px-1.5 py-0.5 border border-forest-machine/50 text-forest-machine font-bold rounded">
                         FSC-C104820
                       </span>
@@ -258,9 +258,9 @@ export const ChapterOverlay = forwardRef<ChapterOverlayHandle, ChapterOverlayPro
                       <span className="px-1.5 py-0.5 border border-forest-machine/50 text-forest-machine font-bold rounded">
                         IS:710 MARINE
                       </span>
-                    </div>
+                    </div> */}
                     <div>
-                      © {new Date().getFullYear()} Arboris Timber Ltd. All rights reserved. Precision Wood Processing.
+                      © {new Date().getFullYear()} Slash Demo. All rights reserved. Precision Wood Processing.
                     </div>
                   </div>
                 </div>

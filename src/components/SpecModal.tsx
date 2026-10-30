@@ -18,7 +18,10 @@ export function SpecModal({ isOpen, onClose }: SpecModalProps) {
       aria-modal="true"
       aria-labelledby="specs-modal-title"
     >
-      <div className="relative w-full max-w-2xl bg-ink-800 border border-veneer/30 rounded-lg p-6 sm:p-8 shadow-2xl text-birch max-h-[90vh] overflow-y-auto">
+      <div 
+        data-lenis-prevent
+        className="relative w-full max-w-2xl bg-ink-800 border border-veneer/30 rounded-lg p-6 sm:p-8 shadow-2xl text-birch max-h-[90vh] overflow-y-auto"
+      >
         <button
           onClick={onClose}
           className="absolute top-5 right-5 p-2 text-steel hover:text-birch bg-ink-700/60 rounded focus:outline-none focus:ring-2 focus:ring-amber-glue"

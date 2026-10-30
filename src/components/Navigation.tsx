@@ -36,7 +36,7 @@ export function Navigation({
             </div>
             <div className="flex flex-col">
               <span className="font-serif font-bold text-base sm:text-lg tracking-wider text-birch uppercase leading-none group-hover:text-veneer transition-colors">
-                Arboris
+                Slash Demo
               </span>
               <span className="font-mono text-[10px] tracking-[0.2em] text-steel uppercase leading-tight mt-0.5">
                 Industrial Timber · EST. 1984

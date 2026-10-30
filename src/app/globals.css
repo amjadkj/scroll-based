@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "locomotive-scroll/dist/locomotive-scroll.css";
+
 :root {
   --ink: #0E1210;
   --veneer: #E9D3A8;

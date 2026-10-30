@@ -37,7 +37,10 @@ export function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
       aria-modal="true"
       aria-labelledby="quote-modal-title"
     >
-      <div className="relative w-full max-w-xl bg-ink-800 border border-veneer/30 rounded-lg p-6 sm:p-8 shadow-2xl shadow-black text-birch max-h-[90vh] overflow-y-auto">
+      <div 
+        data-lenis-prevent
+        className="relative w-full max-w-xl bg-ink-800 border border-veneer/30 rounded-lg p-6 sm:p-8 shadow-2xl shadow-black text-birch max-h-[90vh] overflow-y-auto"
+      >
         {/* Close Button */}
         <button
           onClick={onClose}

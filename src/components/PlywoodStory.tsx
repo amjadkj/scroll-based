@@ -28,6 +28,7 @@ export function PlywoodStory() {
   const [isReadyToScroll, setIsReadyToScroll] = useState(false);
 
   // Internal animation & frame cache refs
+  const locomotiveScrollRef = useRef<any>(null);
   const imagesRef = useRef<(HTMLImageElement | null)[]>(new Array(TOTAL_FRAMES).fill(null));
   const loadedFlagsRef = useRef<boolean[]>(new Array(TOTAL_FRAMES).fill(false));
   const targetProgressRef = useRef(0);
@@ -36,7 +37,7 @@ export function PlywoodStory() {
   const rafIdRef = useRef<number | null>(null);
   const isReducedMotionRef = useRef(false);
 
-  // Jump to specific chapter smoothly
+  // Jump to specific chapter smoothly with LocomotiveScroll support
   const jumpToStage = useCallback((index: number) => {
     if (!storyRef.current) return;
     const ch = CHAPTERS[index];
@@ -45,10 +46,20 @@ export function PlywoodStory() {
     const maxScroll = storyRef.current.offsetHeight - window.innerHeight;
     const targetY = (ch.scrollStart / 100) * maxScroll;
 
-    window.scrollTo({
-      top: targetY,
-      behavior: "smooth",
-    });
+    if (locomotiveScrollRef.current?.lenisInstance?.scrollTo) {
+      locomotiveScrollRef.current.lenisInstance.scrollTo(targetY, {
+        duration: 1.2,
+      });
+    } else if (locomotiveScrollRef.current?.scrollTo) {
+      locomotiveScrollRef.current.scrollTo(targetY, {
+        duration: 1.2,
+      });
+    } else {
+      window.scrollTo({
+        top: targetY,
+        behavior: "smooth",
+      });
+    }
   }, []);
 
   const jumpToNextStage = useCallback(() => {
@@ -196,6 +207,46 @@ export function PlywoodStory() {
       runWorker();
     }
   }, [drawFrame]);
+
+  // Locomotive Scroll smooth inertia engine
+  useEffect(() => {
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) return;
+
+    let locomotiveScrollInstance: any = null;
+
+    const initLocomotive = async () => {
+      try {
+        const LocomotiveScroll = (await import("locomotive-scroll")).default;
+        locomotiveScrollInstance = new LocomotiveScroll({
+          lenisOptions: {
+            wrapper: window,
+            content: document.documentElement,
+            lerp: 0.09,
+            duration: 1.2,
+            orientation: "vertical",
+            gestureOrientation: "vertical",
+            smoothWheel: true,
+            wheelMultiplier: 1.0,
+            touchMultiplier: 1.6,
+            infinite: false,
+          },
+        });
+        locomotiveScrollRef.current = locomotiveScrollInstance;
+      } catch (err) {
+        console.warn("Locomotive Scroll failed to initialize:", err);
+      }
+    };
+
+    initLocomotive();
+
+    return () => {
+      if (locomotiveScrollInstance) {
+        locomotiveScrollInstance.destroy();
+        locomotiveScrollRef.current = null;
+      }
+    };
+  }, []);
 
   // Main scroll and RAF animation loop (Zero React re-render bottleneck)
   useEffect(() => {
@@ -410,12 +461,12 @@ export function PlywoodStory() {
           ))}
 
           {/* Vertical Progress Rail (Right Edge) */}
-          <ProgressRail
+          {/* <ProgressRail
             ref={progressRailRef}
             chapters={CHAPTERS}
             activeChapterIndex={activeChapterIndex}
             onJumpToStage={jumpToStage}
-          />
+          /> */}
 
           {/* Bottom Timecode & Counter Status */}
           <TimecodeDisplay
@@ -428,7 +479,7 @@ export function PlywoodStory() {
             <span className="w-1.5 h-1.5 rounded-full bg-forest-machine" />
             <span>30.0s Tracking Shot</span>
             <span className="text-white/20">·</span>
-            <span>450 WebP Frames</span>
+            <span>Locomotive Scroll</span>
             <span className="text-white/20">·</span>
             <span>GPU Canvas Engine</span>
           </div>
