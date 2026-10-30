@@ -155,7 +155,7 @@ export const ChapterOverlay = forwardRef<ChapterOverlayHandle, ChapterOverlayPro
             </div> */}
 
             {/* Headline */}
-            <h2 className="font-serif text-3xl sm:text-3xl lg:text-3xl font-bold text-birch leading-[1.08] tracking-tight max-w-[20ch]">
+            <h2 className="font-mono text-3xl sm:text-xl lg:text-3xl font-bold text-birch leading-[1.08] tracking-tight max-w-[20ch]">
               {chapter.headline}
             </h2>
 
@@ -166,8 +166,8 @@ export const ChapterOverlay = forwardRef<ChapterOverlayHandle, ChapterOverlayPro
 
             {/* Precision Engineering Stat Card */}
             {chapter.stat && (
-              <div className="mt-2 inline-flex items-center gap-3 bg-ink-800/80 backdrop-blur-md border border-veneer/25 px-4 py-2.5 rounded-sm max-w-fit shadow-md">
-                <span className="font-mono text-smm sm:text-sm font-bold text-amber-glow tracking-tight">
+              <div className="mt-2 inline-flex items-center gap-3 bg-ink-800/80 backdrop-blur-md border border-veneer/25 px-2 py-2 rounded-sm max-w-fit shadow-md">
+                <span className="font-mono text-xs sm:text-xs font-bold text-amber-glow tracking-tight">
                   {chapter.stat.value}
                 </span>
                 {chapter.stat.caption && (

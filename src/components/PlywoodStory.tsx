@@ -469,20 +469,20 @@ export function PlywoodStory() {
           /> */}
 
           {/* Bottom Timecode & Counter Status */}
-          <TimecodeDisplay
+          {/* <TimecodeDisplay
             ref={timecodeRef}
             totalChapters={CHAPTERS.length}
-          />
+          /> */}
 
           {/* Bottom-left subtle technical specs badge */}
-          <div className="hidden md:flex fixed bottom-6 left-6 z-40 items-center gap-3 font-mono text-[11px] text-steel/80 bg-ink-900/60 backdrop-blur-md px-3 py-1.5 rounded border border-white/10 pointer-events-none">
+          {/* <div className="hidden md:flex fixed bottom-6 left-6 z-40 items-center gap-3 font-mono text-[11px] text-steel/80 bg-ink-900/60 backdrop-blur-md px-3 py-1.5 rounded border border-white/10 pointer-events-none">
             <span className="w-1.5 h-1.5 rounded-full bg-forest-machine" />
             <span>30.0s Tracking Shot</span>
             <span className="text-white/20">·</span>
             <span>Locomotive Scroll</span>
             <span className="text-white/20">·</span>
             <span>GPU Canvas Engine</span>
-          </div>
+          </div> */}
         </div>
       </main>
 
