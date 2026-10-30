@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink: #0E1210;
+  --veneer: #E9D3A8;
+  --birch: #F5EBD7;
+  --glue-amber: #D9922B;
+  --machine-green: #4F6B57;
+  --steel: #9AA3A0;
+  --scroll-distance: 800vh;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --scroll-distance: 600vh;
+  }
+}
+
+html {
+  background-color: var(--ink);
+  color: var(--birch);
+  scroll-behavior: auto;
+  font-feature-settings: "tnum" 1, "cv02" 1, "cv03" 1, "cv04" 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--ink);
+  color: var(--birch);
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom industrial scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0E1210;
+}
+::-webkit-scrollbar-thumb {
+  background: #1D2521;
+  border-radius: 3px;
+  border: 1px solid rgba(233, 211, 168, 0.15);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D9922B;
+}
+
+/* Selection */
+::selection {
+  background: #D9922B;
+  color: #0E1210;
+}
+
+/* Scrim Gradients */
+.scrim-left {
+  background: 
+    linear-gradient(to right, rgba(14, 18, 16, 0.82) 0%, rgba(14, 18, 16, 0.6) 35%, rgba(14, 18, 16, 0.15) 60%, transparent 100%),
+    linear-gradient(to top, rgba(14, 18, 16, 0.75) 0%, rgba(14, 18, 16, 0.3) 40%, transparent 80%);
+}
+
+.scrim-right {
+  background: 
+    linear-gradient(to left, rgba(14, 18, 16, 0.82) 0%, rgba(14, 18, 16, 0.6) 35%, rgba(14, 18, 16, 0.15) 60%, transparent 100%),
+    linear-gradient(to top, rgba(14, 18, 16, 0.75) 0%, rgba(14, 18, 16, 0.3) 40%, transparent 80%);
+}
+
+.scrim-center {
+  background: 
+    radial-gradient(ellipse at center, rgba(14, 18, 16, 0.4) 0%, rgba(14, 18, 16, 0.75) 70%, rgba(14, 18, 16, 0.9) 100%),
+    linear-gradient(to top, rgba(14, 18, 16, 0.85) 0%, transparent 50%);
+}
+
+/* Hardware accelerated overlay transformations */
+.overlay-content {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Subtle architectural grain */
+.bg-grain {
+  background-image: radial-gradient(rgba(233, 211, 168, 0.04) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Reduced motion overrides */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
